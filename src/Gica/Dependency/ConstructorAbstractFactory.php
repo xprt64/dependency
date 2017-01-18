@@ -6,33 +6,35 @@
 namespace Gica\Dependency;
 
 
-class ConstructorAbstractFactory implements \Gica\Interfaces\Dependency\AbstractFactory
+use Interop\Container\ContainerInterface;
+
+class ConstructorAbstractFactory implements AbstractFactory
 {
     /** @var array */
     private $callerInjectableConstructorArguments;
 
     /**
-     * @var \Interop\Container\ContainerInterface
+     * @var ContainerInterface
      */
     private $dependencyInjectionContainer;
 
-    public function __construct(\Interop\Container\ContainerInterface $container)
+    public function __construct(ContainerInterface $container)
     {
         $this->setDependencyInjectionContainer($container);
     }
 
     /**
-     * @param \Interop\Container\ContainerInterface $dependencyInjectionContainer
+     * @param ContainerInterface $dependencyInjectionContainer
      */
-    private function setDependencyInjectionContainer(\Interop\Container\ContainerInterface $dependencyInjectionContainer)
+    private function setDependencyInjectionContainer(ContainerInterface $dependencyInjectionContainer)
     {
         $this->dependencyInjectionContainer = $dependencyInjectionContainer;
     }
 
     /**
-     * @return \Interop\Container\ContainerInterface
+     * @return ContainerInterface
      */
-    private function getDependencyInjectionContainer():\Interop\Container\ContainerInterface
+    private function getDependencyInjectionContainer(): ContainerInterface
     {
         return $this->dependencyInjectionContainer;
     }
@@ -106,7 +108,7 @@ class ConstructorAbstractFactory implements \Gica\Interfaces\Dependency\Abstract
 
     private function getParameterFromContainer($hintedClassName)
     {
-        if ($hintedClassName === \Interop\Container\ContainerInterface::class)
+        if ($hintedClassName === ContainerInterface::class)
             return $this->getDependencyInjectionContainer();
 
         return $this->getDependencyInjectionContainer()->get($hintedClassName);
