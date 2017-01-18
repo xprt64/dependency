@@ -1,0 +1,23 @@
+{
+  "name": "xprt64/dependency",
+  "description": "Dependency inversion for PHP",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Constantin GALBENU",
+      "email": "gica.galbenu@gmail.com"
+    }
+  ],
+
+  "require": {
+    "php": "^7.0"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Gica\\Dependency\\": "src/Gica/Dependency/"
+    }
+  }
+}
