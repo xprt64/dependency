@@ -77,7 +77,7 @@ class ConstructorAbstractFactory implements AbstractFactory
     {
         $argument = null;
 
-        $hintedClass = $reflectionParameter->getClass();
+        $hintedClass = @$reflectionParameter->getClass();
 
         if ($hintedClass) {
             $argument = $this->searchInjectableParameter($hintedClass->getName());
